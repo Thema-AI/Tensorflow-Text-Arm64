@@ -1,0 +1,25 @@
+name: build
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_trigger:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up QEMU for emulated building
+        uses: docker/setup-qemu-action@v2
+        with:
+          platforms: arm64 # No sense in wasting time/space on the others.
+      - name: Expose GitHub Runtime
+        uses: crazy-max/ghaction-github-runtime@v2
+      - uses: actions/checkout@v3
+      - name: build
+        run: make build
+      - name: release
+      - uses: ncipollo/release-action@v1
+        with:
+          artifacts: "*.whl"
