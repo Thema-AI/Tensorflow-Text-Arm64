@@ -6,6 +6,8 @@ build: _docker_build_driver
 	  --target=artifact \
 	  --output type=local,dest=build \
 	  --platform=linux/arm64 \
+	  --cache-to type=gha,mode=max \
+	  --cache-from type=gha \
 	  .
 
 _docker_build_driver:
