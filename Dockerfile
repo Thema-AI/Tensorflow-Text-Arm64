@@ -6,7 +6,6 @@ ARG VERSION=v2.13.0
 FROM python:${PYTHON_VERSION} as builder
 ENV PIP_CACHE_DIR=/var/cache/pip
 # Bazelisk is the Bazel installer (Bazel is the build system used by tensorflow).
-# Looks like it's another random binary off the internet!  Hurrah!
 ARG BAZELISK_VERSION=v1.17.0
 RUN <<-EOF
     wget https://github.com/bazelbuild/bazelisk/releases/download/${BAZELISK_VERSION}/bazelisk-linux-arm64
