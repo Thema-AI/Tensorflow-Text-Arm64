@@ -1,10 +1,10 @@
 name: build
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - '*'
-  workflow_trigger:
 
 jobs:
   build:
@@ -20,6 +20,6 @@ jobs:
       - name: build
         run: make build
       - name: release
-      - uses: ncipollo/release-action@v1
+        uses: ncipollo/release-action@v1
         with:
           artifacts: "*.whl"
