@@ -22,4 +22,4 @@ jobs:
       - name: release
         uses: ncipollo/release-action@v1
         with:
-          artifacts: "*.whl"
+          artifacts: "build/*.whl"
